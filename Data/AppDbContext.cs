@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using dotnetEightAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnetEightAPI.Data
 {
@@ -8,5 +9,7 @@ namespace dotnetEightAPI.Data
         {
             
         }
+
+        public DbSet<Student> Students { get; set; }
     }
 }
