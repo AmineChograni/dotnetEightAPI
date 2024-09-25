@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using dotnetEightAPI.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace dotnetEightAPI.Controllers
 {
@@ -6,10 +7,12 @@ namespace dotnetEightAPI.Controllers
     [Route("api/[controller]")]// api/students
     public class StudentsController:ControllerBase
     {
-        [HttpGet]
-        public string SayHi()
+        private readonly AppDbContext _context;
+        public StudentsController(AppDbContext context)
         {
-            return "Hi";
+            _context = context;
         }
+
+
     }
 }
