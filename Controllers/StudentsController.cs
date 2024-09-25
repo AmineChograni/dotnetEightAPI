@@ -1,5 +1,7 @@
 ﻿using dotnetEightAPI.Data;
+using dotnetEightAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnetEightAPI.Controllers
 {
@@ -13,6 +15,12 @@ namespace dotnetEightAPI.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<Student>> GetStudents()
+        {
+            var students = await _context.Students.AsNoTracking().ToListAsync();
 
+            return students;
+        }
     }
 }
