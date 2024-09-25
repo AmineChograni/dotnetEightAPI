@@ -22,5 +22,25 @@ namespace dotnetEightAPI.Controllers
 
             return students;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Student student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _context.AddAsync(student);
+
+            var result = await _context.SaveChangesAsync();
+
+            if (result > 0)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }
